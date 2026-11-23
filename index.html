@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Descubra os melhores destinos de Pernambuco: praias, história e cultura.">
+  <title>Descubra Pernambuco</title>
+  <style>
+    :root {
+      --azul: #0b4f6c;
+      --turquesa: #01baef;
+      --areia: #fbfbff;
+      --coral: #ff6b4a;
+      --texto: #1f2933;
+      --cinza: #5f6c7b;
+      --raio: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--texto);
+      background: var(--areia);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: min(1100px, 92%); margin-inline: auto; }
+
+    /* ---------- Cabeçalho ---------- */
+    .topo {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11, 79, 108, .96);
+      color: #fff;
+    }
+    .topo .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+    }
+    .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: .5px; }
+    .logo span { color: var(--turquesa); }
+    .menu { display: flex; gap: 24px; list-style: none; }
+    .menu a { font-weight: 500; padding-bottom: 4px; border-bottom: 2px solid transparent; transition: .2s; }
+    .menu a:hover { border-color: var(--turquesa); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      min-height: 85vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 80px 0;
+      /* Troque o gradiente por: url("sua-imagem.jpg") center/cover */
+      background:
+        linear-gradient(rgba(11,79,108,.55), rgba(11,79,108,.75)),
+        linear-gradient(135deg, #01baef 0%, #0b4f6c 60%, #ff6b4a 130%);
+    }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 18px; }
+    .hero p { max-width: 620px; margin: 0 auto 30px; font-size: 1.15rem; opacity: .95; }
+
+    .botao {
+      display: inline-block;
+      background: var(--coral);
+      color: #fff;
+      font-weight: 700;
+      padding: 14px 34px;
+      border-radius: 50px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .botao:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.25); }
+
+    /* ---------- Seções ---------- */
+    section { padding: 80px 0; }
+    .titulo { text-align: center; margin-bottom: 48px; }
+    .titulo h2 { font-size: 2rem; color: var(--azul); }
+    .titulo p { color: var(--cinza); max-width: 560px; margin: 8px auto 0; }
+
+    /* ---------- Destinos ---------- */
+    .grade {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 26px;
+    }
+    .card {
+      background: #fff;
+      border-radius: var(--raio);
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(0,0,0,.14); }
+
+    .card figure {
+      height: 180px;
+      display: grid;
+      place-items: center;
+      font-size: 3.4rem;
+      /* Para usar foto: background: url("foto.jpg") center/cover; */
+      background: var(--img);
+    }
+    .card .conteudo { padding: 22px; }
+    .card h3 { color: var(--azul); margin-bottom: 8px; }
+    .card p { color: var(--cinza); font-size: .95rem; }
+    .tag {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--coral);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .f1 { --img: linear-gradient(135deg, #f6d365, #fda085); }
+    .f2 { --img: linear-gradient(135deg, #43cea2, #185a9d); }
+    .f3 { --img: linear-gradient(135deg, #4facfe, #00f2fe); }
+    .f4 { --img: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+
+    /* ---------- Sobre ---------- */
+    .sobre { background: #e8f6fb; }
+    .sobre .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .sobre h2 { color: var(--azul); font-size: 2rem; margin-bottom: 16px; }
+    .sobre p { margin-bottom: 14px; color: var(--cinza); }
+    .destaques { list-style: none; display: grid; gap: 14px; }
+    .destaques li {
+      background: #fff;
+      padding: 18px 20px;
+      border-left: 5px solid var(--turquesa);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.06);
+    }
+    .destaques strong { display: block; color: var(--azul); }
+
+    /* ---------- Chamada final ---------- */
+    .cta {
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--azul), #0a7ea4);
+    }
+    .cta h2 { font-size: 2rem; margin-bottom: 12px; }
+    .cta p { margin-bottom: 28px; opacity: .92; }
+
+    /* ---------- Rodapé ---------- */
+    footer {
+      background: #08354a;
+      color: #cfe3ec;
+      text-align: center;
+      padding: 28px 0;
+      font-size: .9rem;
+    }
+
+    /* ---------- Responsivo ---------- */
+    @media (max-width: 760px) {
+      .menu { gap: 14px; font-size: .9rem; }
+      .sobre .container { grid-template-columns: 1fr; }
+      section { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topo">
+    <div class="container">
+      <a class="logo" href="#inicio">Viaje<span>PE</span></a>
+      <nav aria-label="Navegação principal">
+        <ul class="menu">
+          <li><a href="#destinos">Destinos</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <h1>Descubra o melhor de Pernambuco</h1>
+        <p>Praias de águas cristalinas, ladeiras históricas e uma cultura que pulsa em cada esquina. Sua próxima viagem começa aqui.</p>
+        <a class="botao" href="#destinos">Explorar destinos</a>
+      </div>
+    </section>
+
+    <section id="destinos">
+      <div class="container">
+        <header class="titulo">
+          <h2>Destinos imperdíveis</h2>
+          <p>Quatro lugares para você conhecer e se apaixonar.</p>
+        </header>
+
+        <div class="grade">
+          <article class="card">
+            <figure class="f1" role="img" aria-label="Ilustração de Recife Antigo">🌉</figure>
+            <div class="conteudo">
+              <h3>Recife Antigo</h3>
+              <p>Casarões coloridos, o Marco Zero e uma agenda cultural vibrante às margens do Capibaribe e do mar.</p>
+              <span class="tag">História &amp; Cultura</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <figure class="f2" role="img" aria-label="Ilustração de Olinda">🎭</figure>
+            <div class="conteudo">
+              <h3>Olinda</h3>
+              <p>Patrimônio da Humanidade, com ladeiras, igrejas barrocas, bonecos gigantes e o melhor do frevo.</p>
+              <span class="tag">Patrimônio</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <figure class="f3" role="img" aria-label="Ilustração de Porto de Galinhas">🏝️</figure>
+            <div class="conteudo">
+              <h3>Porto de Galinhas</h3>
+              <p>Piscinas naturais, jangadas e mergulho entre peixes coloridos em uma das praias mais famosas do Brasil.</p>
+              <span class="tag">Praia</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <figure class="f4" role="img" aria-label="Ilustração de Fernando de Noronha">🐢</figure>
+            <div class="conteudo">
+              <h3>Fernando de Noronha</h3>
+              <p>Arquipélago paradisíaco com tartarugas, golfinhos e algumas das paisagens submarinas mais bonitas do mundo.</p>
+              <span class="tag">Natureza</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sobre" id="sobre">
+      <div class="container">
+        <div>
+          <h2>Por que visitar Pernambuco?</h2>
+          <p>O estado combina litoral deslumbrante, gastronomia marcante e festas populares que atraem visitantes o ano inteiro.</p>
+          <p>Do carnaval de rua ao pôr do sol em uma jangada, cada roteiro oferece uma experiência autêntica e acolhedora.</p>
+        </div>
+        <ul class="destaques">
+          <li><strong>☀️ Sol o ano todo</strong>Clima tropical e temperaturas agradáveis em qualquer estação.</li>
+          <li><strong>🍤 Gastronomia local</strong>Tapioca, caldinho, bolo de rolo e frutos do mar fresquinhos.</li>
+          <li><strong>🎶 Cultura viva</strong>Frevo, maracatu e forró em festas tradicionais.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta" id="contato">
+      <div class="container">
+        <h2>Pronto para embarcar?</h2>
+        <p>Entre em contato e monte o roteiro ideal para você.</p>
+        <a class="botao" href="mailto:contato@viajepe.com">Fale com a gente</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 ViajePE — Projeto de Landing Page em HTML e CSS.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
